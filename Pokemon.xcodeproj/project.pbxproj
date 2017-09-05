@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4957A6061F5F4F1F00976F25 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957A6051F5F4F1F00976F25 /* PokemonCell.swift */; };
 		49CCA58A1E68C8FC00493593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCA5891E68C8FC00493593 /* AppDelegate.swift */; };
 		49CCA58C1E68C8FC00493593 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCA58B1E68C8FC00493593 /* ViewController.swift */; };
 		49CCA58F1E68C8FD00493593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CCA58D1E68C8FD00493593 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4957A6051F5F4F1F00976F25 /* PokemonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		49CCA5861E68C8FC00493593 /* Pokemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CCA5891E68C8FC00493593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CCA58B1E68C8FC00493593 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4957A6021F5F4D5200976F25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4957A6051F5F4F1F00976F25 /* PokemonCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		49CCA57D1E68C8FB00493593 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 		49CCA5881E68C8FC00493593 /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
+				4957A6021F5F4D5200976F25 /* View */,
 				49DBEB281E68CF36009C44A5 /* Model */,
 				49CCA5891E68C8FC00493593 /* AppDelegate.swift */,
 				49CCA58B1E68C8FC00493593 /* ViewController.swift */,
@@ -278,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49CCA58C1E68C8FC00493593 /* ViewController.swift in Sources */,
+				4957A6061F5F4F1F00976F25 /* PokemonCell.swift in Sources */,
 				49CCA58A1E68C8FC00493593 /* AppDelegate.swift in Sources */,
 				49DBEB2A1E68CF4F009C44A5 /* Pokemon.swift in Sources */,
 			);

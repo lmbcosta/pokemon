@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,7 +48,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MuF-Mf-W6M">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCell" id="MuF-Mf-W6M" customClass="PokemonCell" customModule="Pokemon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -56,7 +56,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charmander" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aT-Nw-HaF">
-                                                    <rect key="frame" x="0.0" y="60" width="80" height="20"/>
+                                                    <rect key="frame" x="0.0" y="59" width="80" height="20"/>
                                                     <color key="backgroundColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Gtv-fV-w5t"/>
@@ -76,12 +76,16 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="4aT-Nw-HaF" secondAttribute="trailing" id="TnE-0F-jpr"/>
-                                            <constraint firstItem="4aT-Nw-HaF" firstAttribute="top" secondItem="3Mv-QJ-zIl" secondAttribute="bottom" constant="2" id="UQP-qd-hnX"/>
+                                            <constraint firstItem="4aT-Nw-HaF" firstAttribute="top" secondItem="3Mv-QJ-zIl" secondAttribute="bottom" constant="1" id="UQP-qd-hnX"/>
                                             <constraint firstItem="3Mv-QJ-zIl" firstAttribute="top" secondItem="MuF-Mf-W6M" secondAttribute="top" id="aC4-BQ-h2w"/>
                                             <constraint firstAttribute="trailing" secondItem="3Mv-QJ-zIl" secondAttribute="trailing" id="fVo-Oc-UNz"/>
                                             <constraint firstItem="4aT-Nw-HaF" firstAttribute="leading" secondItem="MuF-Mf-W6M" secondAttribute="leading" id="hc7-qU-6cd"/>
                                             <constraint firstItem="3Mv-QJ-zIl" firstAttribute="leading" secondItem="MuF-Mf-W6M" secondAttribute="leading" id="yoJ-QX-Kxg"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="name" destination="4aT-Nw-HaF" id="QEN-3h-mst"/>
+                                            <outlet property="thumbImage" destination="3Mv-QJ-zIl" id="SBC-7n-lIz"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
