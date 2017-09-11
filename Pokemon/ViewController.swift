@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
-
+    
     @IBOutlet weak var collectioView: UICollectionView!
     @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var muteBtn: UIButton!
@@ -35,6 +35,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+    // MARK: - Flow functions
     func initAudio() {
         if let path = Bundle.main.path(forResource: "music", ofType: "mp3") {
             do {
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
-    // Collection View protocol functions
+    // MARK: - Collection View Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return isInFilterMode ? filterPokemons.count : pokemons.count
     }
@@ -85,6 +86,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let pokemon = isInFilterMode ? filterPokemons[indexPath.row] : pokemons[indexPath.row]
+        performSegue(withIdentifier: "PokemonDetailVC", sender: pokemon)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -93,7 +99,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSize(width: 105, height: 105)
     }
     
-    // Searchbar delegate procol function
+    // MARK: - SearchBar functions
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let search = searchBar.text, search != "" {
             isInFilterMode = true
@@ -113,6 +119,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         view.endEditing(true)
     }
     
+    // MARK: - Segue function
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PokemonDetailVC" {
+            if let detailVC = segue.destination as? PokemonDetailVC {
+                if let poke = sender as? Pokemon {
+                    detailVC.pokemon = poke
+                }
+            }
+        }
+    }
+    
+    // MARK: - Action functions
     @IBAction func musicBtnPressed(_ sender: Any) {
         if musicPlayer.isPlaying {
             musicPlayer.stop()
