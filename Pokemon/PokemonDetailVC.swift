@@ -12,7 +12,7 @@ class PokemonDetailVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
-    @IBOutlet weak var details: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var defenseLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
@@ -37,8 +37,9 @@ class PokemonDetailVC: UIViewController {
     }
     
     private func updateUI() {
-        // TODO: Missing details
-        //       Missing type
+        
+        descriptionLabel.text = pokemon.desc
+        typeLabel.text = pokemon.type
         defenseLabel.text = pokemon.defense
         heightLabel.text = pokemon.height
         pokedexLabel.text = "\(pokemon.pokedex)"

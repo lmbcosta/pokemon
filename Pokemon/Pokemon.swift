@@ -21,11 +21,24 @@ class Pokemon {
     private var _baseAtack: String!
     private var _pokemonURL: String!
     private var _nextEvolution: String!
+    private var _desc: String!
+    private var _nextEvolutionName: String!
+    private var _nextEvoId: String!
+    private var _nextEvoLevel: String!
+    
+    // TODO: - Fazer os setters para os nextEvo
     
     init(name: String, pokedexId: Int) {
         self._name = name
         self._podedexId = pokedexId
         self._pokemonURL = URL_BASE_POKEMON + "\(self.pokedex)"
+    }
+    
+    var desc: String {
+        if _desc == nil {
+            _desc = ""
+        }
+        return _desc
     }
     
     var type: String {
@@ -101,6 +114,60 @@ class Pokemon {
                     if let attack = json["attack"] as? Int {
                         self._baseAtack = "\(attack)"
                         print(self._baseAtack)
+                    }
+                    
+                    // Get types
+                    if let types = json["types"] as? [Dictionary<String, String>] , types.count > 0 {
+                        if let name = types[0]["name"] {
+                            self._type = name.capitalized
+                        }
+                        
+                        // Check if there is more than one type
+                        if types.count > 1 {
+                            for x in 1..<types.count {
+                                if let name = types[x]["name"] {
+                                    self._type! += "/\(name.capitalized)"
+                                    print(self._type)
+                                }
+                            }
+                        }
+                        
+                    } else {
+                        self._type = "quaqua"
+                    }
+                    
+                    // Get description
+                    if let descArray = json["descriptions"] as? [Dictionary<String, Any>], descArray.count > 0 {
+                        if let descURL = descArray[0]["resource_uri"] as? String {
+                            let path = URL_BASE + descURL
+                            
+                            if let url = URL(string: path) {
+                                Alamofire.request(url).responseJSON{response in
+                                    if let jsonDesc = response.result.value as? Dictionary<String, Any> {
+                                        if let description = jsonDesc["description"] as? String {
+                                            
+                                            let newDescription = description.replacingOccurrences(of: "POKMON", with: "Pokemon")
+                                            
+                                            print(newDescription)
+                                            self._desc = newDescription.capitalized     
+                                        }
+                                    }
+                                    completed()
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        self._desc = ""
+                    }
+                    
+                    // Get evolutions
+                    if let evolutions = json["evolutions"] as? [Dictionary<String, Any>], evolutions.count > 0 {
+                        if let nextEvo = evolutions[0]["to"] as? String {
+                            if nextEvo.range(of: "mega") == nil {
+                                
+                            }
+                        }
                     }
                 }
                 completed()
