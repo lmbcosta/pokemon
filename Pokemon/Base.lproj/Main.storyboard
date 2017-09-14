@@ -208,13 +208,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-mb-uK3">
                                 <rect key="frame" x="31" y="438" width="258" height="120"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="T78-Rp-Y8P">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T78-Rp-Y8P">
                                         <rect key="frame" x="0.0" y="0.0" width="119" height="120"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="Vaz-3v-drj">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vaz-3v-drj">
                                         <rect key="frame" x="139" y="0.0" width="119" height="120"/>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Jpl-vA-4k8"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-8e-A3s">
                                 <rect key="frame" x="16" y="116" width="288" height="263.5"/>
@@ -360,7 +363,7 @@
                                                         <rect key="frame" x="0.0" y="30" width="283" height="20"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="woJ-ZS-jhK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="96" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102" height="20"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="243" verticalHuggingPriority="251" text="Weight: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h7-pO-2lt">
                                                                         <rect key="frame" x="0.0" y="0.0" width="62" height="20"/>
@@ -369,9 +372,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hA-sh-aeB">
-                                                                        <rect key="frame" x="67" y="0.0" width="29" height="20"/>
+                                                                        <rect key="frame" x="67" y="0.0" width="35" height="20"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="29" id="b3D-77-Na1"/>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="Gyv-ML-ivK"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -424,12 +427,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-o9-bXK">
                                 <rect key="frame" x="0.0" y="402" width="320" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Evolution: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdU-JK-bqq">
-                                        <rect key="frame" x="0.0" y="5" width="320.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdU-JK-bqq">
+                                        <rect key="frame" x="0.0" y="5" width="320" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="by0-Ja-G0u"/>
+                                            <constraint firstAttribute="width" constant="320" id="ccN-mL-8kr" userLabel="350"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -474,6 +478,7 @@
                         <outlet property="currentEvoImg" destination="T78-Rp-Y8P" id="5kt-9b-vs9"/>
                         <outlet property="defenseLabel" destination="THq-A9-AHe" id="2O6-ik-R6w"/>
                         <outlet property="descriptionLabel" destination="UxM-pz-F3P" id="UcN-9C-kbW"/>
+                        <outlet property="evolutionLabel" destination="jdU-JK-bqq" id="OiB-0V-taD"/>
                         <outlet property="heightLabel" destination="9I3-3o-dyn" id="LFH-Ln-0nO"/>
                         <outlet property="mainImage" destination="caS-IN-E5C" id="Ta9-9E-y2U"/>
                         <outlet property="nameLabel" destination="G4b-f6-YRm" id="neE-HQ-cEm"/>
@@ -489,8 +494,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="120" height="120"/>
-        <image name="2" width="120" height="120"/>
         <image name="4" width="120" height="120"/>
         <image name="5" width="120" height="120"/>
         <image name="back" width="100" height="67"/>

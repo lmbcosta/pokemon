@@ -22,16 +22,35 @@ class Pokemon {
     private var _pokemonURL: String!
     private var _nextEvolution: String!
     private var _desc: String!
-    private var _nextEvolutionName: String!
+    private var _nextEvoName: String!
     private var _nextEvoId: String!
     private var _nextEvoLevel: String!
-    
-    // TODO: - Fazer os setters para os nextEvo
     
     init(name: String, pokedexId: Int) {
         self._name = name
         self._podedexId = pokedexId
         self._pokemonURL = URL_BASE_POKEMON + "\(self.pokedex)"
+    }
+    
+    var nextEvolutionName: String {
+        if _nextEvoName == nil {
+            _nextEvoName = ""
+        }
+        return _nextEvoName
+    }
+    
+    var nextEvoId: String {
+        if _nextEvoId == nil {
+            _nextEvoId = ""
+        }
+        return _nextEvoId
+    }
+    
+    var nextEvoLevel: String {
+        if _nextEvoLevel == nil {
+            _nextEvoLevel = ""
+        }
+        return _nextEvoLevel
     }
     
     var desc: String {
@@ -165,7 +184,24 @@ class Pokemon {
                     if let evolutions = json["evolutions"] as? [Dictionary<String, Any>], evolutions.count > 0 {
                         if let nextEvo = evolutions[0]["to"] as? String {
                             if nextEvo.range(of: "mega") == nil {
+                                self._nextEvoName = nextEvo
+                                print("Name: " + nextEvo)
                                 
+                                if let uri = evolutions[0]["resource_uri"] as? String {
+                                    let newString = uri.replacingOccurrences(of: "api/v1/pokemon/", with: "")
+                                    let nextEvoId = newString.replacingOccurrences(of: "/", with: "")
+                                    
+                                    self._nextEvoId = nextEvoId
+                                    print("Id: " + nextEvoId)
+                                    
+                                    if let levelExist = evolutions[0]["level"] {
+                                        if let level = levelExist as? Int {
+                                            self._nextEvoLevel = "\(level)"
+                                        }
+                                    } else {
+                                        self._nextEvoLevel = ""
+                                    }
+                                }
                             }
                         }
                     }

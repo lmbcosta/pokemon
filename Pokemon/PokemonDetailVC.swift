@@ -21,6 +21,7 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var baseAttackLabel: UILabel!
     @IBOutlet weak var currentEvoImg: UIImageView!
     @IBOutlet weak var nextEvoImg: UIImageView!
+    @IBOutlet weak var evolutionLabel: UILabel!
     
     var pokemon: Pokemon!
     
@@ -45,8 +46,16 @@ class PokemonDetailVC: UIViewController {
         pokedexLabel.text = "\(pokemon.pokedex)"
         weightLabel.text = pokemon.weight
         baseAttackLabel.text = pokemon.baseAttack
+        if pokemon.nextEvoId == "" {
+            evolutionLabel.text = "No Evolution"
+            nextEvoImg.isHidden = true
+        } else {
+            let evoText = "Next Evolution: \(pokemon.nextEvolutionName) Level: \(pokemon.nextEvoLevel)"
+            evolutionLabel.text = evoText
+            nextEvoImg.image = UIImage(named: pokemon.nextEvoId)
+            nextEvoImg.isHidden = false
+        }
         currentEvoImg.image = UIImage(named: "\(pokemon.pokedex)")
-        // nextEvoImg.image = UIImage(named: pokemon.nextEvolution)
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
